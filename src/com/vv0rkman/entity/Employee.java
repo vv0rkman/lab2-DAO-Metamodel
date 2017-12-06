@@ -9,6 +9,13 @@ public class Employee implements Serializable {
     private int manager;
     private int id_dept;
 
+	public Employee(int id, String name, int manager, int id_dept){
+			this.id = id;
+			this.name = name;
+			this.manager = manager;
+			this.id_dept = id_dept;
+	}
+	
     public int getId() {
         return id;
     }
