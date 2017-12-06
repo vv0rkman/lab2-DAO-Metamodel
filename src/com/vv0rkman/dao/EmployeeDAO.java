@@ -14,11 +14,11 @@ public interface EmployeeDAO {
 
     Collection<Employee> getEmployees();
 
-    Collection<Employee> getEmployeesByName();
+    Collection<Employee> getEmployeesByName(String name);
 
-    Collection<Employee> getEmployeesByManager();
+    Collection<Employee> getEmployeesByManager(int mgr);
 
-    boolean updateEmployees(int id, String name, int manager, int department_id);
+    boolean updateEmployee(int id, String name, int manager, int department_id);
 
 }
 
