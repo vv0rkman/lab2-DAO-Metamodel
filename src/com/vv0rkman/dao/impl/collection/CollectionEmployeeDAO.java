@@ -2,8 +2,10 @@ package com.vv0rkman.dao.impl.collection;
 
 import com.vv0rkman.dao.EmployeeDAO;
 import com.vv0rkman.entity.Employee;
-import service.IDGenerator;
+import com.vv0rkman.service.IDGenerator;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class CollectionEmployeeDAO implements EmployeeDAO {
@@ -15,8 +17,8 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
 	
     @Override
     public int addEmployee(int id, String name, int manager, int department_id) {
-        BigInteger id = IDGenerator.generateCollectionId(id);		
-		empList.add(new Employee(id, emp_name, department));
+        //BigInteger id = IDGenerator.generateCollectionId(id);
+		empList.add(new Employee(id, name, manager, department_id));
         return id;
     }
 
@@ -34,7 +36,7 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     @Override
     public Employee getEmployeeById(int department_id) {
         for (Employee employee : empList) {
-			if (employee.getId() == id) {
+			if (employee.getId() == department_id) {
 				return employee;
 			}
 		}
@@ -65,7 +67,7 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
 				empByMgr.add(employee);
 			}
 		}
-		return empByName;
+		return empByMgr;
     }
 
     @Override
