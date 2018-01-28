@@ -3,21 +3,27 @@ package com.vv0rkman.dao;
 import com.vv0rkman.entity.Customer;
 
 import java.util.Collection;
+import java.util.logging.Logger;
 
 public interface CustomerDAO {
+    //for Customer type of object = 1
+    int object_type_id = 1;
 
-    int addCustomer(int id, String name);
+    Logger log = Logger.getLogger(EmployeeDAO.class.getName());
 
-    boolean deleteCustomerById(int id);
+    void addCustomer(int id, String name);
 
-    boolean deleteCustomerByName(String name);
+    void addCustomer(Customer customer);
 
-    Customer getCustomerById(int customer_id);
+    void deleteCustomer(int id);
 
-    Customer getCustomerByName(String name);
+    Customer getCustomer(int customer_id);
+
+    Collection<Customer> getCustomers(String customerName);
 
     Collection<Customer> getCustomers();
 
-    boolean updateCustomer(int id, String name);
+    void updateCustomer(int id, String name);
 
+    void updateCustomer(Customer customer);
 }

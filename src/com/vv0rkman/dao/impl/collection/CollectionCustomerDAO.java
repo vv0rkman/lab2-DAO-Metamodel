@@ -7,27 +7,27 @@ import java.util.Collection;
 
 public class CollectionCustomerDAO implements CustomerDAO {
     @Override
-    public int addCustomer(int id, String name) {
-        return 0;
+    public void addCustomer(int id, String name) {
+
     }
 
     @Override
-    public boolean deleteCustomerById(int id) {
-        return false;
+    public void addCustomer(Customer customer) {
+
     }
 
     @Override
-    public boolean deleteCustomerByName(String name) {
-        return false;
+    public void deleteCustomer(int id) {
+
     }
 
     @Override
-    public Customer getCustomerById(int customer_id) {
+    public Customer getCustomer(int customer_id) {
         return null;
     }
 
     @Override
-    public Customer getCustomerByName(String name) {
+    public Collection<Customer> getCustomers(String customerName) {
         return null;
     }
 
@@ -37,7 +37,12 @@ public class CollectionCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public boolean updateCustomer(int id, String name) {
-        return false;
+    public void updateCustomer(int id, String name) {
+
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+
     }
 }

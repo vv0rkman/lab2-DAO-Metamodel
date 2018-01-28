@@ -3,22 +3,31 @@ package com.vv0rkman.dao;
 import com.vv0rkman.entity.Employee;
 
 import java.util.Collection;
+import java.util.logging.Logger;
 
 public interface EmployeeDAO {
 
-    int addEmployee(int id, String name, int manager, int department_id);
+    Logger log = Logger.getLogger(EmployeeDAO.class.getName());
 
-    boolean deleteEmployeeById(int id);
+    int object_type_id = 5;
 
-    Employee getEmployeeById(int id);
+    void addEmployee(int id, String name, int salary, int manager, int department_id);
+
+    void addEmployee(Employee employee);
+
+    void deleteEmployee(int id);
+
+    Employee getEmployee(int id);
 
     Collection<Employee> getEmployees();
 
-    Collection<Employee> getEmployeesByName(String name);
+    Collection<Employee> getEmployees(String employeeName);
 
-    Collection<Employee> getEmployeesByManager(int mgr);
+    Collection<Employee> getEmployees(int managerID);
 
-    boolean updateEmployee(int id, String name, int manager, int department_id);
+    void updateEmployee(int id, String name, int salary, int manager, int department_id);
+
+    void updateEmployee(Employee employee);
 
 }
 
