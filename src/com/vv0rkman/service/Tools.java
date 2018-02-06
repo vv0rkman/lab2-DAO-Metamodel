@@ -3,14 +3,28 @@ package com.vv0rkman.service;
 import com.vv0rkman.entity.Entity;
 
 import java.lang.Object;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public interface Tools {
-    //    static BigInteger generateID(){
-////        Random randomNumber = new Random();
-////        BigInteger id = new BigInteger(LocalDate.now());
-//        return 0;
-    //}
+
+    static Long generateID() {
+
+        Date dNow = new Date();
+
+        SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmss");
+
+        String datetime = ft.format(dNow);
+
+        Random randomNumber = new Random();
+
+        datetime += randomNumber.nextInt(1000 - 100 + 1 ) + 100;
+
+        Long id = new Long(datetime);
+
+        return id;
+    }
+
     LinkedHashMap<Integer, Object> prepareData(Entity entity, int object_type_id);
 
 
