@@ -6,6 +6,7 @@ import com.vv0rkman.dao.impl.jdbc.JdbcCustomerDAO;
 import com.vv0rkman.dao.impl.jdbc.JdbcEmployeeDAO;
 import com.vv0rkman.entity.Customer;
 import com.vv0rkman.entity.Employee;
+import com.vv0rkman.service.Tools;
 
 import java.util.ArrayList;
 
@@ -14,9 +15,9 @@ public class Main {
 //        JdbcCustomerDAO a = new JdbcCustomerDAO();
 ////        Customer customer = new Customer(19,"text");
 //        //a.addCustomer(customer);
-        Employee employee = new Employee(599, "Scott", 1111, 55, 61);
+        Employee employee = new Employee("Scott", 1111, 55L, 61);
         JdbcEmployeeDAO employeeDAO = new JdbcEmployeeDAO();
-        //employeeDAO.addEmployee(employee);
+//        employeeDAO.addEmployee(employee);
         //employeeDAO.deleteEmployee(599);
         //employeeDAO.updateEmployee(666, "ttt", 55, 61);
 //
@@ -34,14 +35,14 @@ public class Main {
 //
 //        employeeDAO.updateEmployee(employee);
 
-//        ArrayList<Employee> employees = employeeDAO.getEmployees();
-//
-//        for (Employee e : employees) {
-//            System.out.println(e.toString());
-//        }
+        ArrayList<Employee> employees = employeeDAO.getEmployees();
 
-        Customer customer = new Customer(9, 0, "Test");
-        CustomerDAO customerDAO = new JdbcCustomerDAO();
+        for (Employee e : employees) {
+            System.out.println(e.toString());
+        }
+
+//        Customer customer = new Customer(9, 0, "Test");
+//        CustomerDAO customerDAO = new JdbcCustomerDAO();
 //        customerDAO.addCustomer(customer);
 //        System.out.println(customerDAO.getCustomer(9).toString());
 //        customer.setName("Test2");
@@ -58,8 +59,9 @@ public class Main {
 //            System.out.println(customer1.toString());
 //        }
 
-        for (Customer customer1: customerDAO.getCustomers()){
-            System.out.println(customer1.toString());
-        }
+//        for (Customer customer1: customerDAO.getCustomers()){
+//            System.out.println(customer1.toString());
+//        }
+
     }
 }

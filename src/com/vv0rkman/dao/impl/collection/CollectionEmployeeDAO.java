@@ -14,9 +14,9 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public void addEmployee(int id, String name, int salary, int manager, int department_id) {
+    public void addEmployee(String name, int salary, Long manager, int department_id) {
         //BigInteger id = Tools.generateCollectionId(id);
-        empList.add(new Employee(id, name, salary, manager, department_id));
+        empList.add(new Employee(name, salary, manager, department_id));
     }
 
     @Override
@@ -25,7 +25,7 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public void deleteEmployee(int id) {
+    public void deleteEmployee(Long id) {
         for (Employee employee : empList) {
             if (employee.getId() == id) {
                 empList.remove(employee);
@@ -34,9 +34,9 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public Employee getEmployee(int department_id) {
+    public Employee getEmployee(Long department_id) {
         for (Employee employee : empList) {
-            if (employee.getId() == department_id) {
+            if (employee.getId_dept() == department_id) {
                 return employee;
             }
         }
@@ -60,7 +60,7 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public Collection<Employee> getEmployees(int managerID) {
+    public Collection<Employee> getEmployees(Long managerID) {
         ArrayList<Employee> empByMgr = new ArrayList<>();
         for (Employee employee : empList) {
             if (employee.getManager() == managerID) {
@@ -71,7 +71,7 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public void updateEmployee(int id, String name, int salary, int manager, int department_id) {
+    public void updateEmployee(Long id, String name, int salary, Long manager, int department_id) {
         for (Employee employee : empList) {
             if (employee.getId() == id) {
                 employee.setName(name);

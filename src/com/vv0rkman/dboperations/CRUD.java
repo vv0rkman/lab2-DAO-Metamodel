@@ -24,8 +24,8 @@ public class CRUD {
                 Connection conn = JdbcDAOFactory.createConnectionWithPool();
                 PreparedStatement stmt = conn.prepareStatement(insertObjString)) {
 
-            stmt.setInt(1, entity.getId());
-            stmt.setInt(5, entity.getId());
+            stmt.setLong(1, entity.getId());
+            stmt.setLong(5, entity.getId());
 
             if (entity.getParent_id() == 0) {
                 stmt.setNull(2, Types.INTEGER);
@@ -46,14 +46,14 @@ public class CRUD {
         return 0;
     }
 
-    protected static int deleteObject(int object_id) {
+    protected static int deleteObject(Long object_id) {
         String deleteObjString = "DELETE FROM OBJECTS WHERE OBJECT_ID = ?";
 
         try (
                 Connection conn = JdbcDAOFactory.createConnectionWithPool();
                 PreparedStatement stmt = conn.prepareStatement(deleteObjString)) {
 
-            stmt.setInt(1, object_id);
+            stmt.setLong(1, object_id);
 
             return stmt.executeUpdate();
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class CRUD {
         return 0;
     }
 
-    protected static int setParams(int object_id, LinkedHashMap<Integer, Object> preparedData, boolean insert) {
+    protected static int setParams(Long object_id, LinkedHashMap<Integer, Object> preparedData, boolean insert) {
         String paramsString;
 
         if (insert) {
@@ -79,7 +79,7 @@ public class CRUD {
                 Connection conn = JdbcDAOFactory.createConnectionWithPool();
                 PreparedStatement stmt = conn.prepareStatement(paramsString)) {
 
-            stmt.setInt(5, object_id);
+            stmt.setLong(5, object_id);
 
             for (Map.Entry<Integer, Object> data : preparedData.entrySet()) {
 
@@ -87,8 +87,8 @@ public class CRUD {
                     stmt.setString(1, data.getValue().toString());
                     stmt.setNull(2, Types.INTEGER);
                     stmt.setNull(3, Types.DATE);
-                } else if (data.getValue() instanceof Integer) {
-                    stmt.setInt(2, ((Integer) (data.getValue())));
+                } else if (data.getValue() instanceof Long) {
+                    stmt.setLong(2, ((Long) (data.getValue())));
                     stmt.setNull(1, Types.VARCHAR);
                     stmt.setNull(3, Types.DATE);
                 } else if (data.getValue() instanceof java.util.Date) {
@@ -126,7 +126,7 @@ public class CRUD {
                 stmt.setInt(2, entity.getParent_id());
             }
 
-            stmt.setInt(3, entity.getId());
+            stmt.setLong(3, entity.getId());
 
             return stmt.executeUpdate();
 

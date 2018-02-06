@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public class CollectionCustomerDAO implements CustomerDAO {
     @Override
-    public void addCustomer(int id, String name) {
+    public void addCustomer(Long id, String name) {
 
     }
 
@@ -17,12 +17,12 @@ public class CollectionCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public void deleteCustomer(Long id) {
 
     }
 
     @Override
-    public Customer getCustomer(int customer_id) {
+    public Customer getCustomer(Long customer_id) {
         return null;
     }
 
@@ -37,7 +37,7 @@ public class CollectionCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public void updateCustomer(int id, String name) {
+    public void updateCustomer(Long id, String name) {
 
     }
 

@@ -11,19 +11,19 @@ public interface CustomerDAO {
 
     Logger log = Logger.getLogger(EmployeeDAO.class.getName());
 
-    void addCustomer(int id, String name);
+    void addCustomer(Long id, String name);
 
     void addCustomer(Customer customer);
 
-    void deleteCustomer(int id);
+    void deleteCustomer(Long id);
 
-    Customer getCustomer(int customer_id);
+    Customer getCustomer(Long customer_id);
 
     Collection<Customer> getCustomers(String customerName);
 
     Collection<Customer> getCustomers();
 
-    void updateCustomer(int id, String name);
+    void updateCustomer(Long id, String name);
 
     void updateCustomer(Customer customer);
 }

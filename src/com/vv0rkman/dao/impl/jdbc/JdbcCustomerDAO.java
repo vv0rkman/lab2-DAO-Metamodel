@@ -12,7 +12,7 @@ import java.util.*;
 public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
 
     @Override
-    public void addCustomer(int id, String name) {
+    public void addCustomer(Long id, String name) {
 
         addCustomer(new Customer(id, 0, name));
 
@@ -41,7 +41,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public void deleteCustomer(Long id) {
 
         if (CRUD.deleteObject(id) > 0) {
             log.info("Entity deleted");
@@ -51,7 +51,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
     }
 
     @Override
-    public Customer getCustomer(int customer_id) {
+    public Customer getCustomer(Long customer_id) {
 
         LinkedHashMap customerData = Selector.getObject(customer_id);
 
@@ -101,7 +101,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
 
         ArrayList<Customer> customers = new ArrayList<>();
 
-        LinkedHashMap<Integer, LinkedHashMap<Integer, Object>> empMap = Selector.getObjects(object_type_id);
+        LinkedHashMap<Long, LinkedHashMap<Integer, Object>> empMap = Selector.getObjects(object_type_id);
 
         if (empMap.isEmpty()) {
 
@@ -115,7 +115,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
 
             Customer customer = new Customer();
 
-            customer.setId((Integer) empEntry.getKey());
+            customer.setId((Long) empEntry.getKey());
 
             LinkedHashMap params = (LinkedHashMap) empEntry.getValue();
 
@@ -128,7 +128,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
     }
 
     @Override
-    public void updateCustomer(int id, String name) {
+    public void updateCustomer(Long id, String name) {
         updateCustomer(new Customer(id, 0 , name));
     }
 

@@ -35,7 +35,7 @@ public class Selector {
         return attr;
     }
 
-    public static LinkedHashMap getObject(int object_id) {
+    public static LinkedHashMap getObject(Long object_id) {
 
         String selectObjectString =
                 "SELECT o.OBJECT_ID, o.PARENT_ID, o.OBJECT_NAME, a.ATTR_ID, p.NUMBER_VALUE, p.TEXT_VALUE, p.DATE_VALUE " +
@@ -100,7 +100,7 @@ public class Selector {
         return objectParams;
     }
 
-    public static LinkedHashMap<Integer, LinkedHashMap<Integer, Object>> getObjects(int object_type_id) {
+    public static LinkedHashMap<Long, LinkedHashMap<Integer, Object>> getObjects(int object_type_id) {
 
         String selectObjectString =
                 "SELECT o.OBJECT_ID, o.PARENT_ID, o.OBJECT_NAME, a.ATTR_ID, p.NUMBER_VALUE, p.TEXT_VALUE, p.DATE_VALUE " +
@@ -113,9 +113,9 @@ public class Selector {
 
         boolean hasParams = true;
 
-        int id = 0;
+        Long id = 0L;
 
-        LinkedHashMap<Integer, LinkedHashMap<Integer, Object>> objects = new LinkedHashMap<>();
+        LinkedHashMap<Long, LinkedHashMap<Integer, Object>> objects = new LinkedHashMap<>();
         LinkedHashMap<Integer, Object> objectParams = new LinkedHashMap<>();
 
         try (
@@ -138,10 +138,10 @@ public class Selector {
 
             while (rs.next()) {
 
-                if (rs.getInt(1) == id) {
+                if (rs.getLong(1) == id) {
                     objects.put(id, objectParams);
                 } else {
-                    id = rs.getInt(1);
+                    id = rs.getLong(1);
                     objectParams = new LinkedHashMap<>();
                     objects.put(id, objectParams);
                 }

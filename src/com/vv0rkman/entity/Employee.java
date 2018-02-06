@@ -1,17 +1,31 @@
 package com.vv0rkman.entity;
 
+import com.vv0rkman.service.Tools;
+
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Employee extends Entity {
 
-    private int manager;
+    private Long manager;
     private int id_dept;
     private int salary;
 
     public Employee(){}
 
-    public Employee(int id, String name, int salary, int manager, int id_dept) {
+    public Employee(String name, int salary, Long manager, int id_dept) {
+
+        super(Tools.generateID(), id_dept, name);
+
+        this.manager = manager;
+        this.salary = salary;
+        this.id_dept = id_dept;
+
+    }
+
+    public Employee(Long id, String name, int salary, Long manager, int id_dept) {
+
         super(id, id_dept, name);
 
         this.manager = manager;
@@ -27,11 +41,11 @@ public class Employee extends Entity {
         this.salary = salary;
     }
 
-    public int getManager() {
+    public Long getManager() {
         return manager;
     }
 
-    public void setManager(int manager) {
+    public void setManager(Long manager) {
         this.manager = manager;
     }
 
@@ -66,7 +80,11 @@ public class Employee extends Entity {
 
             } else if (paramEntry.getKey().equals(12)) {
 
-                setManager((Integer) paramEntry.getValue());
+                setManager(Long.getLong(paramEntry.getValue().toString()));
+
+            } else if (paramEntry.getKey().equals(15)) {
+
+                setSalary((Integer) paramEntry.getValue());
             }
         }
     }

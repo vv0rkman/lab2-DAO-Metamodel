@@ -12,9 +12,9 @@ import java.util.*;
 public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
 
     @Override
-    public void addEmployee(int id, String name, int salary, int manager, int department_id) {
+    public void addEmployee(String name, int salary, Long manager, int department_id) {
 
-        addEmployee(new Employee(id, name, salary, manager, department_id));
+        addEmployee(new Employee(name, salary, manager, department_id));
 
     }
 
@@ -37,7 +37,7 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
     }
 
     @Override
-    public void deleteEmployee(int id) {
+    public void deleteEmployee(Long id) {
 
         if (CRUD.deleteObject(id) > 0) {
             log.info("Entity Employee deleted");
@@ -46,7 +46,7 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
     }
 
     @Override
-    public Employee getEmployee(int id) {
+    public Employee getEmployee(Long id) {
 
         LinkedHashMap employeeData = Selector.getObject(id);
 
@@ -71,7 +71,7 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
 
         ArrayList<Employee> employees = new ArrayList<>();
 
-        LinkedHashMap<Integer, LinkedHashMap<Integer, Object>> empMap = Selector.getObjects(object_type_id);
+        LinkedHashMap<Long, LinkedHashMap<Integer, Object>> empMap = Selector.getObjects(object_type_id);
 
         if (empMap.isEmpty()) {
 
@@ -85,7 +85,7 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
 
             Employee employee = new Employee();
 
-            employee.setId((Integer) empEntry.getKey());
+            employee.setId((Long) empEntry.getKey());
 
             LinkedHashMap params = (LinkedHashMap) empEntry.getValue();
 
@@ -119,7 +119,7 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
     }
 
     @Override
-    public ArrayList<Employee> getEmployees(int managerID) {
+    public ArrayList<Employee> getEmployees(Long managerID) {
 
         ArrayList<Employee> employees = getEmployees();
 
@@ -140,7 +140,7 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
     }
 
     @Override
-    public void updateEmployee(int id, String name, int salary, int manager, int department_id) {
+    public void updateEmployee(Long id, String name, int salary, Long manager, int department_id) {
 
         updateEmployee(new Employee(id, name, salary, manager, department_id));
 
