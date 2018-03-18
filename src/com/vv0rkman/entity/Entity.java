@@ -1,5 +1,7 @@
 package com.vv0rkman.entity;
 
+import com.vv0rkman.service.Tools;
+
 import java.io.Serializable;
 
 public class Entity implements Serializable {
@@ -13,7 +15,13 @@ public class Entity implements Serializable {
 
     Entity(){}
 
-    Entity(Long id, int parent_id, String name) {
+    Entity(int parent_id, String name) {
+        this.id = Tools.generateID();
+        this.parent_id = parent_id;
+        this.name = name;
+    }
+
+    Entity(long id, int parent_id, String name) {
         this.id = id;
         this.parent_id = parent_id;
         this.name = name;

@@ -11,7 +11,7 @@ public interface CustomerDAO {
 
     Logger log = Logger.getLogger(EmployeeDAO.class.getName());
 
-    void addCustomer(Long id, String name);
+    void addCustomer(String name);
 
     void addCustomer(Customer customer);
 

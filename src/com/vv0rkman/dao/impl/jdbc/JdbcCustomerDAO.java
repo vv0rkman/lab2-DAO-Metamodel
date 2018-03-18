@@ -12,9 +12,9 @@ import java.util.*;
 public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
 
     @Override
-    public void addCustomer(Long id, String name) {
+    public void addCustomer(String name) {
 
-        addCustomer(new Customer(id, 0, name));
+        addCustomer(new Customer(0, name));
 
     }
 
@@ -155,7 +155,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
 
         LinkedHashMap<Integer, Object> objectParams = new LinkedHashMap<>();
 
-        Customer customer = (Customer) entity;
+        //Customer customer = (Customer) entity;
 
         LinkedHashMap<Integer, Object> attr = Selector.getAttr(object_type_id);
 

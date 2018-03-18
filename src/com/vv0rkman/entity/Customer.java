@@ -11,6 +11,10 @@ public class Customer extends Entity {
         super(id, parent_id, name);
     }
 
+    public Customer(int parent_id, String name) {
+        super(parent_id, name);
+    }
+
     public void setData(LinkedHashMap params) {
 
         for (Object aParamsSet : params.entrySet()) {
