@@ -1,6 +1,7 @@
 package com.vv0rkman.dao;
 
 import com.vv0rkman.dao.impl.collection.CollectionDAOFactory;
+import com.vv0rkman.dao.impl.jdbc.JdbcDAOFactory;
 
 public abstract class DAOFactory {
 
@@ -27,9 +28,9 @@ public abstract class DAOFactory {
             case TEXTFILE:
                 return new TxtDAOFactory();
             case BINARYFILE:
-                return new BinDAOFactory();
+                return new BinDAOFactory();*/
             case JDBC:
-                return new JdbcDAOFactory();*/
+                return new JdbcDAOFactory();
             default:
                 return null;
         }

@@ -1,23 +1,29 @@
 package com.vv0rkman;
 
 import com.vv0rkman.dao.CustomerDAO;
+import com.vv0rkman.dao.DAOFactory;
 import com.vv0rkman.dao.EmployeeDAO;
-import com.vv0rkman.dao.impl.jdbc.JdbcCustomerDAO;
-import com.vv0rkman.dao.impl.jdbc.JdbcEmployeeDAO;
 import com.vv0rkman.entity.Customer;
 import com.vv0rkman.entity.Employee;
-import com.vv0rkman.service.Tools;
 
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-//        JdbcCustomerDAO a = new JdbcCustomerDAO();
-////        Customer customer = new Customer(19,"text");
-//        //a.addCustomer(customer);
+
+        DAOFactory jDaoFactory = DAOFactory.getDAOFactory(DAOFactory.DAOType.JDBC);
+
+        EmployeeDAO employeeDAO = null;
+
+        if (jDaoFactory != null) {
+
+            employeeDAO = jDaoFactory.getEmployeeDAO();
+
+        }
+
         Employee employee = new Employee("Scott", 1111, 55L, 61);
-        JdbcEmployeeDAO employeeDAO = new JdbcEmployeeDAO();
-//        employeeDAO.addEmployee(employee);
+
+        employeeDAO.addEmployee(employee);
         //employeeDAO.deleteEmployee(599);
         //employeeDAO.updateEmployee(666, "ttt", 55, 61);
 //
@@ -42,7 +48,7 @@ public class Main {
         }
 
 //        Customer customer = new Customer(9, 0, "Test");
-//        CustomerDAO customerDAO = new JdbcCustomerDAO();
+//        CustomerDAO customerDAO = jDaoFactory.getCustomerDAO();
 //        customerDAO.addCustomer(customer);
 //        System.out.println(customerDAO.getCustomer(9).toString());
 //        customer.setName("Test2");

@@ -2,6 +2,7 @@ package com.vv0rkman.dao;
 
 import com.vv0rkman.entity.Employee;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Logger;
 
@@ -19,7 +20,7 @@ public interface EmployeeDAO {
 
     Employee getEmployee(Long id);
 
-    Collection<Employee> getEmployees();
+    ArrayList<Employee> getEmployees();
 
     Collection<Employee> getEmployees(String employeeName);
 

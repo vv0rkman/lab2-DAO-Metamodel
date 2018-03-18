@@ -4,7 +4,6 @@ import com.vv0rkman.dao.EmployeeDAO;
 import com.vv0rkman.entity.Employee;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class CollectionEmployeeDAO implements EmployeeDAO {
     private ArrayList<Employee> empList;
@@ -44,12 +43,12 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public Collection<Employee> getEmployees() {
+    public ArrayList<Employee> getEmployees() {
         return empList;
     }
 
     @Override
-    public Collection<Employee> getEmployees(String employeeName) {
+    public ArrayList<Employee> getEmployees(String employeeName) {
         ArrayList<Employee> empByName = new ArrayList<>();
         for (Employee employee : empList) {
             if (employee.getName().equals(employeeName)) {
@@ -60,7 +59,7 @@ public class CollectionEmployeeDAO implements EmployeeDAO {
     }
 
     @Override
-    public Collection<Employee> getEmployees(Long managerID) {
+    public ArrayList<Employee> getEmployees(Long managerID) {
         ArrayList<Employee> empByMgr = new ArrayList<>();
         for (Employee employee : empList) {
             if (employee.getManager() == managerID) {

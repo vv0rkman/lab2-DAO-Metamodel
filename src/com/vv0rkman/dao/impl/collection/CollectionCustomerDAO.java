@@ -3,11 +3,12 @@ package com.vv0rkman.dao.impl.collection;
 import com.vv0rkman.dao.CustomerDAO;
 import com.vv0rkman.entity.Customer;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 public class CollectionCustomerDAO implements CustomerDAO {
+
     @Override
-    public void addCustomer(Long id, String name) {
+    public void addCustomer(String name) {
 
     }
 
@@ -27,12 +28,12 @@ public class CollectionCustomerDAO implements CustomerDAO {
     }
 
     @Override
-    public Collection<Customer> getCustomers(String customerName) {
+    public ArrayList<Customer> getCustomers(String customerName) {
         return null;
     }
 
     @Override
-    public Collection<Customer> getCustomers() {
+    public ArrayList<Customer> getCustomers() {
         return null;
     }
 
