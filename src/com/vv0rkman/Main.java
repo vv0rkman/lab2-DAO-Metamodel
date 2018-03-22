@@ -7,23 +7,18 @@ import com.vv0rkman.entity.Customer;
 import com.vv0rkman.entity.Employee;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
 
         DAOFactory jDaoFactory = DAOFactory.getDAOFactory(DAOFactory.DAOType.JDBC);
 
-        EmployeeDAO employeeDAO = null;
+        EmployeeDAO employeeDAO = Objects.requireNonNull(jDaoFactory).getEmployeeDAO();
 
-        if (jDaoFactory != null) {
+        //Employee employee = new Employee("Scott", 1111, 55L, 61);
 
-            employeeDAO = jDaoFactory.getEmployeeDAO();
-
-        }
-
-        Employee employee = new Employee("Scott", 1111, 55L, 61);
-
-        employeeDAO.addEmployee(employee);
+        //employeeDAO.addEmployee(employee);
         //employeeDAO.deleteEmployee(599);
         //employeeDAO.updateEmployee(666, "ttt", 55, 61);
 //
@@ -41,11 +36,17 @@ public class Main {
 //
 //        employeeDAO.updateEmployee(employee);
 
-        ArrayList<Employee> employees = employeeDAO.getEmployees();
+//        ArrayList<Employee> employees = employeeDAO.getEmployees();
+//
+//        for (Employee e : employees) {
+//            System.out.println(e.toString());
+//        }
 
-        for (Employee e : employees) {
-            System.out.println(e.toString());
-        }
+        Employee employee1 = employeeDAO.getEmployee(51L);
+        System.out.println(employee1.toString());
+        // Data has been loaded from cache
+        Employee employee2 = employeeDAO.getEmployee(51L);
+        System.out.println(employee2.toString());
 
 //        Customer customer = new Customer(9, 0, "Test");
 //        CustomerDAO customerDAO = jDaoFactory.getCustomerDAO();
