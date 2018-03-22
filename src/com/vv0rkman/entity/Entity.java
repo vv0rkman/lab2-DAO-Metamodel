@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 public class Entity implements Serializable {
 
-    protected static final int PARENT_ID = 2;
-    protected static final int NAME = 1;
+    static final int PARENT_ID = 2;
+    static final int NAME = 1;
 
     long id;
     long parent_id;
