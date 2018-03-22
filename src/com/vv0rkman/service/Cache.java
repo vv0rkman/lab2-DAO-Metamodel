@@ -11,13 +11,13 @@ public class Cache {
 
     private static final int MAX_ENTRIES = 5_000;
 
-    Cache(){
+    public Cache(){
 
         this(10_000);
 
     }
 
-    Cache(long millisUntilExpiration) {
+    public Cache(long millisUntilExpiration) {
 
         this.millisUntilExpiration = millisUntilExpiration;
 
@@ -31,7 +31,7 @@ public class Cache {
 
     }
 
-    static class Entry {
+    static private class Entry {
         private long timestamp;
         private Object object;
 
@@ -57,7 +57,7 @@ public class Cache {
         }
     }
 
-    synchronized void put(long id, Object object) {
+    synchronized public void put(long id, Object object) {
 
         Entry entry = entryFor(id);
 
