@@ -12,9 +12,9 @@ import java.util.*;
 
 public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
 
-    Cache cache;
+    private Cache cache;
 
-    public JdbcEmployeeDAO(){
+    JdbcEmployeeDAO(){
 
         cache = new Cache();
 
