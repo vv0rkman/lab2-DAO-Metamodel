@@ -9,25 +9,25 @@ public class Entity implements Serializable {
     protected static final int PARENT_ID = 2;
     protected static final int NAME = 1;
 
-    Long id;
-    int parent_id;
+    long id;
+    long parent_id;
     String name;
 
     Entity(){}
 
-    Entity(int parent_id, String name) {
+    Entity(long parent_id, String name) {
         this.id = Tools.generateID();
         this.parent_id = parent_id;
         this.name = name;
     }
 
-    Entity(long id, int parent_id, String name) {
+    Entity(long id, long parent_id, String name) {
         this.id = id;
         this.parent_id = parent_id;
         this.name = name;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -35,7 +35,7 @@ public class Entity implements Serializable {
         this.id = id;
     }
 
-    public int getParent_id() {
+    public long getParent_id() {
         return parent_id;
     }
 
