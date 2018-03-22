@@ -8,13 +8,13 @@ import java.util.Map;
 
 public class Employee extends Entity {
 
-    private Long manager;
-    private int id_dept;
+    private long manager;
+    private long id_dept;
     private int salary;
 
     public Employee(){}
 
-    public Employee(String name, int salary, Long manager, int id_dept) {
+    public Employee(String name, int salary, long manager, long id_dept) {
 
         super(Tools.generateID(), id_dept, name);
 
@@ -24,7 +24,7 @@ public class Employee extends Entity {
 
     }
 
-    public Employee(Long id, String name, int salary, Long manager, int id_dept) {
+    public Employee(Long id, String name, int salary, Long manager, long id_dept) {
 
         super(id, id_dept, name);
 
@@ -49,11 +49,11 @@ public class Employee extends Entity {
         this.manager = manager;
     }
 
-    public int getId_dept() {
+    public long getId_dept() {
         return id_dept;
     }
 
-    public void setId_dept(int id_dept) {
+    public void setId_dept(long id_dept) {
         this.id_dept = id_dept;
         this.parent_id = id_dept;
     }
