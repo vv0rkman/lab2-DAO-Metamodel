@@ -5,11 +5,20 @@ import com.vv0rkman.dao.EmployeeDAO;
 import com.vv0rkman.dboperations.Selector;
 import com.vv0rkman.entity.Employee;
 import com.vv0rkman.entity.Entity;
+import com.vv0rkman.service.Cache;
 import com.vv0rkman.service.Tools;
 
 import java.util.*;
 
 public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
+
+    Cache cache;
+
+    public JdbcEmployeeDAO(){
+
+        cache = new Cache();
+
+    }
 
     @Override
     public void addEmployee(String name, int salary, Long manager, int department_id) {
@@ -28,8 +37,11 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
             LinkedHashMap<Integer, Object> preparedData = prepareData(employee, object_type_id);
 
             if (CRUD.setParams(employee.getId(), preparedData, true) > 0) {
+
                 log.info("Parameters for the Employee object were inserted");
+
             } else
+
                 log.info("Parameters for the Employee object not inserted");
 
         } else
@@ -48,11 +60,17 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
     @Override
     public Employee getEmployee(Long id) {
 
+        if (cache.get(id) == null){
+
+            log.info("Entity Employee with ID " + id +" not found if Cache");
+
+        }
+
         LinkedHashMap employeeData = Selector.getObject(id);
 
         if ((employeeData.isEmpty())) {
 
-            log.info("Entity Employee with ID " + id +" not found");
+            log.info("Entity Employee with ID " + id +" not found in DB");
             return null;
 
         }
@@ -62,6 +80,8 @@ public class JdbcEmployeeDAO extends CRUD implements EmployeeDAO, Tools {
         employee.setId(id);
 
         employee.setData(employeeData);
+
+        cache.put(employee.getId(), employee);
 
         return employee;
     }

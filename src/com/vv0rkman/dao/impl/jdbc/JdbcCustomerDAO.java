@@ -5,11 +5,20 @@ import com.vv0rkman.dao.CustomerDAO;
 import com.vv0rkman.dboperations.Selector;
 import com.vv0rkman.entity.Customer;
 import com.vv0rkman.entity.Entity;
+import com.vv0rkman.service.Cache;
 import com.vv0rkman.service.Tools;
 
 import java.util.*;
 
 public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
+
+    private Cache cache;
+
+    JdbcCustomerDAO() {
+
+        cache = new Cache();
+
+    }
 
     @Override
     public void addCustomer(String name) {
@@ -53,6 +62,12 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
     @Override
     public Customer getCustomer(Long customer_id) {
 
+        if (cache.get(customer_id) == null) {
+
+            log.info("Entity Customer with ID " + customer_id + " not found if Cache");
+
+        }
+
         LinkedHashMap customerData = Selector.getObject(customer_id);
 
         if ((customerData.isEmpty())) {
@@ -67,6 +82,8 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
         customer.setId(customer_id);
 
         customer.setData(customerData);
+
+        cache.put(customer.getId(), customer);
 
         return customer;
     }
@@ -129,7 +146,7 @@ public class JdbcCustomerDAO extends CRUD implements CustomerDAO, Tools {
 
     @Override
     public void updateCustomer(Long id, String name) {
-        updateCustomer(new Customer(id, 0 , name));
+        updateCustomer(new Customer(id, 0, name));
     }
 
     @Override
